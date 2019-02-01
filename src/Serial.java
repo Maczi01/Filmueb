@@ -8,6 +8,10 @@ public class Serial {
     private String description;
     private double rating;
 
+    public Serial(){
+
+    }
+
     public Serial(String name, int numberOfSeasons, int numberOfParts, String producer, String category, String description, double rating) {
         this.name = name;
         this.numberOfSeasons = numberOfSeasons;

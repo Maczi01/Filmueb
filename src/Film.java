@@ -7,6 +7,10 @@ public class Film {
     private String description;
     private double rating;
 
+    public Film(){
+
+    }
+
     public Film(String name, String director, int yearOfProduction, String category, String description, double rating) {
         this.name = name;
         this.director = director;

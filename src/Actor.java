@@ -4,6 +4,10 @@ public class Actor {
     private String lastName;
     private String country;
 
+    public Actor() {
+
+    }
+
     public Actor(String firstName, String lastName, String country) {
         this.firstName = firstName;
         this.lastName = lastName;
