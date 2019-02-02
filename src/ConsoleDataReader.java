@@ -1,6 +1,53 @@
+import java.sql.SQLOutput;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ConsoleDataReader {
+
+    Actor[] tabelaAktorow;
+    Serial[] tabelaSeriali;
+    Film[] tablicaFilmow;
+
+    void options() {
+        System.out.println("Menu wyboru opcji");
+        System.out.println("1 : Dodaj aktora");
+        System.out.println("2 : Dodaj film");
+        System.out.println("3 : Dodaj serial");
+        System.out.println("4 : Wyświetl informacje o aktorach");
+        System.out.println("5 : Informacje o programie");
+        System.out.println("0 : Wyjscie z programu");
+    }
+
+    void menu() {
+        Scanner scanner = new Scanner(System.in);
+        int number;
+        do {
+            options();
+            number = scanner.nextInt();
+            switch (number) {
+                case 1:
+                    createActor();
+                    break;
+                case 2:
+                    createMovie();
+                    break;
+                case 3:
+                    createTvSeries();
+                    break;
+                case 4:
+                    wyswietlAktorow();
+                    break;
+                case 5:
+                    aboutProgram();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Sprobuj ponownie");
+            }
+        } while (number != 0);
+
+    }
 
     Film createMovie() {
         Scanner scanner = new Scanner(System.in);
@@ -49,41 +96,39 @@ public class ConsoleDataReader {
 //                serial.getProducer()+" " + serial.getRating());
     }
 
-    Actor createActor() {
+
+    void createActor() {
         Scanner scanner = new Scanner(System.in);
-        Actor actor = new Actor();
-        System.out.println("Podaj imie aktora");
-        actor.setFirstName(scanner.nextLine());
-        System.out.println("Podaj nazwisko aktora");
-        actor.setLastName(scanner.nextLine());
-        System.out.println("Podaj kraj pochodzenia aktora");
-        actor.setCountry(scanner.nextLine());
-//        System.out.println(actor.getFirstName() + " " + actor.getLastName() + " " +actor.getCountry());
-        return actor;
+        System.out.println("Ilu aktorów chcesz dodać ?");
+        int q = scanner.nextInt();
+        tabelaAktorow = new Actor[q];
+        for (int i = 0; i < tabelaAktorow.length; i++) {
+            Scanner scanner1 = new Scanner(System.in);
+            System.out.println("Podaj imie aktora");
+            String imie = scanner1.nextLine();
+            System.out.println("Podaj nazwisko aktora");
+            String nazwisko = scanner1.nextLine();
+            System.out.println("Podaj kraj pochodzenia aktora");
+            String kraj = scanner1.nextLine();
+            tabelaAktorow[i] = new Actor(imie, nazwisko, kraj);
+        }
     }
 
-//    void showInfoAboutActor() {
-//        createActor().getFirstName();
-//        createActor().getLastName();
-//        createActor().getCountry();
-//    }
-//
-//    void showInfoAboutSerial() {
-//        createTvSeries().getName();
-//        createTvSeries().getCategory();
-//        createTvSeries().getDescription();
-//        createTvSeries().getNumberOfSeasons();
-//        createTvSeries().getProducer();
-//        createTvSeries().getNumberOfParts();
-//        createTvSeries().getRating();
-//    }
-//
-//    void showInfoAboutMovie() {
-//        createMovie().getName();
-//        createMovie().getCategory();
-//        createMovie().getDescription();
-//        createMovie().getDirector();
-//        createMovie().getRating();
-//        createMovie().getYearOfProduction();
-//    }
+
+
+    void wyswietlAktorow() {
+        for (int i = 0; i < tabelaAktorow.length; i++) {
+            System.out.println(tabelaAktorow[i].getFirstName());
+            System.out.println(tabelaAktorow[i].getCountry());
+            System.out.println(tabelaAktorow[i].getLastName());
+        }
+    }
+
+    static void aboutProgram() {
+        System.out.println();
+        System.out.println("******-----------******");
+        System.out.println("Filmueb");
+        System.out.println("version: 0.1");
+    }
+
 }

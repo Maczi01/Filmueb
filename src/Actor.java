@@ -3,15 +3,16 @@ public class Actor {
     private String firstName;
     private String lastName;
     private String country;
+    private Actor[] actors;
 
     public Actor() {
-
     }
 
     public Actor(String firstName, String lastName, String country) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
+//        this.actors = actors;
     }
 
     public String getFirstName() {
@@ -37,6 +38,14 @@ public class Actor {
     public void setCountry(String country) {
         this.country = country;
     }
+
+//    public Actor[] getActors() {
+//        return actors;
+//    }
+//
+//    public void setActors(Actor[] actors) {
+//        this.actors = actors;
+//    }
 
     void showInfo() {
         System.out.println(getFirstName());
